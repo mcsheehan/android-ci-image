@@ -1,8 +1,8 @@
 FROM openjdk:8-jdk
-MAINTAINER Mark Sheehan <https://github.com/mcsheehan/>
+MAINTAINER Mark Sheehan
 
 ENV ANDROID_TARGET_SDK="27" \
-    ANDROID_BUILD_TOOLS="27.0.0" \
+    ANDROID_BUILD_TOOLS="27.0.2" \
     ANDROID_SDK_TOOLS_REV="3859397"
 
 # Update and Install Package
@@ -26,10 +26,13 @@ RUN yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 
 # Update android sdk
 RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager --update > /dev/null
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager 'tools' > /dev/null
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager 'platform-tools' > /dev/null
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager 'extras;android;m2repository' > /dev/null
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager 'extras;google;google_play_services' > /dev/null
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager 'extras;google;m2repository' > /dev/null
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager 'platforms;android-'${ANDROID_TARGET_SDK} > /dev/null
-RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager 'build-tools;'${ANDROID_BUILD_TOOLS} > /dev/null
+RUN echo y | $ANDROID_HOME/tools/bin/sdkmanager 'tools' \
+'platform-tools' \
+'extras;android;m2repository' \
+'extras;google;google_play_services' \
+'extras;google;m2repository' \
+'platforms;android-'${ANDROID_TARGET_SDK} \
+'build-tools;'${ANDROID_BUILD_TOOLS} \
+'ndk-bundle' \
+"cmake;3.6.4111459" \
+'emulator' > /dev/null
