@@ -11,9 +11,9 @@ ENV GRADLE_STORAGE $PWD/gradle-download
 ENV PATH $PATH:$ANDROID_HOME/tools
 ENV PATH $PATH:$ANDROID_HOME/platform-tools
 
-# Build gradle 
+# Build gradle  Downloading https://services.gradle.org/distributions/gradle-4.1-all.zip
 ENV GRADLE_VERSION 4.1 
-ENV GRADLE_SDK_URL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip 
+ENV GRADLE_SDK_URL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip 
 RUN curl -sSL "${GRADLE_SDK_URL}" -o gradle-${GRADLE_VERSION}-bin.zip  \
     && unzip gradle-${GRADLE_VERSION}-bin.zip -d ${GRADLE_STORAGE}  \
     && rm -rf gradle-${GRADLE_VERSION}-bin.zip
