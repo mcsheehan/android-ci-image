@@ -5,6 +5,14 @@ ENV ANDROID_TARGET_SDK="27" \
     ANDROID_BUILD_TOOLS="27.0.2" \
     ANDROID_SDK_TOOLS_REV="3859397"
 
+# Build gradle 
+ENV GRADLE_VERSION 4.1 
+ENV GRADLE_SDK_URL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip 
+RUN curl -sSL "${GRADLE_SDK_URL}" -o gradle-${GRADLE_VERSION}-bin.zip  \
+    && unzip gradle-${GRADLE_VERSION}-bin.zip -d ${SDK_HOME}  \
+    && rm -rf gradle-${GRADLE_VERSION}-bin.zip
+ENV GRADLE_HOME ${SDK_HOME}/gradle-${GRADLE_VERSION} ENV PATH ${GRADLE_HOME}/bin:$PATH
+
 # Update and Install Package
 RUN apt-get --quiet update --yes
 RUN apt-get --quiet install --yes curl tar lib32stdc++6 lib32z1
