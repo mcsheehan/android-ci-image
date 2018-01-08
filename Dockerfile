@@ -7,16 +7,19 @@ ENV ANDROID_TARGET_SDK="27" \
 
 # Environment
 ENV ANDROID_HOME $PWD/android-sdk-linux
-ENV GRADLE_STORAGE $PWD/gradle-download
+ENV GRADLE_STORAGE $PWD/gradle
 ENV PATH $PATH:$ANDROID_HOME/tools
 ENV PATH $PATH:$ANDROID_HOME/platform-tools
 
 # Build gradle  Downloading https://services.gradle.org/distributions/gradle-4.1-all.zip
-ENV GRADLE_VERSION 4.1 
+ENV GRADLE_VERSION 4.1
 ENV GRADLE_SDK_URL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip 
+
 RUN curl -sSL "${GRADLE_SDK_URL}" -o gradle-${GRADLE_VERSION}-bin.zip  \
     && unzip gradle-${GRADLE_VERSION}-bin.zip -d ${GRADLE_STORAGE}  \
     && rm -rf gradle-${GRADLE_VERSION}-bin.zip
+RUN mkdir .gradle
+
 ENV GRADLE_HOME ${GRADLE_STORAGE}/gradle-${GRADLE_VERSION} 
 ENV PATH $PATH:${GRADLE_HOME}/bin
 
@@ -24,13 +27,11 @@ ENV PATH $PATH:${GRADLE_HOME}/bin
 RUN apt-get --quiet update --yes
 RUN apt-get --quiet install --yes curl tar lib32stdc++6 lib32z1
 
-
 # Install Android SDK
 # https://developer.android.com/studio/index.html
 ENV ANDROID_SDK_ZIP https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS_REV}.zip
 RUN mkdir ${ANDROID_HOME}
 RUN curl -L $ANDROID_SDK_ZIP -o temp.zip && unzip -qq temp.zip -d ${ANDROID_HOME} && rm temp.zip
-
 
 # Accept licenses
 RUN yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
