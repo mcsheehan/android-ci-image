@@ -4,7 +4,7 @@ MAINTAINER Mark Sheehan
 ENV ANDROID_TARGET_SDK="27" \
     ANDROID_BUILD_TOOLS="27.0.2" \
     ANDROID_SDK_TOOLS_REV="3859397" \
-    ENV GRADLE_VERSION 4.1
+    GRADLE_VERSION="4.1"
 
 # Environment
 # Build gradle  Downloading https://services.gradle.org/distributions/gradle-4.1-all.zip
