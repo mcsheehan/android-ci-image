@@ -3,25 +3,26 @@ MAINTAINER Mark Sheehan
 
 ENV ANDROID_TARGET_SDK="27" \
     ANDROID_BUILD_TOOLS="27.0.2" \
-    ANDROID_SDK_TOOLS_REV="3859397"
+    ANDROID_SDK_TOOLS_REV="3859397" \
+    ENV GRADLE_VERSION 4.1
 
 # Environment
+# Build gradle  Downloading https://services.gradle.org/distributions/gradle-4.1-all.zip
 ENV ANDROID_HOME $PWD/android-sdk-linux
-ENV GRADLE_STORAGE $PWD/gradle
+ENV GRADLE_STORAGE $PWD/.gradle
 ENV PATH $PATH:$ANDROID_HOME/tools
 ENV PATH $PATH:$ANDROID_HOME/platform-tools
+ENV GRADLE_URL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip 
 
-# Build gradle  Downloading https://services.gradle.org/distributions/gradle-4.1-all.zip
-ENV GRADLE_VERSION 4.1
-ENV GRADLE_SDK_URL https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-all.zip 
-
-RUN curl -sSL "${GRADLE_SDK_URL}" -o gradle-${GRADLE_VERSION}-bin.zip  \
+# Gradle
+RUN mkdir ${GRADLE_STORAGE}
+RUN curl -sSL "${GRADLE_URL}" -o gradle-${GRADLE_VERSION}-bin.zip  \
     && unzip gradle-${GRADLE_VERSION}-bin.zip -d ${GRADLE_STORAGE}  \
     && rm -rf gradle-${GRADLE_VERSION}-bin.zip
-RUN mkdir .gradle
 
-ENV GRADLE_HOME ${GRADLE_STORAGE}/gradle-${GRADLE_VERSION} 
-ENV PATH $PATH:${GRADLE_HOME}/bin
+ENV GRADLE_HOME ${GRADLE_STORAGE}/bin
+ENV PATH $PATH:${GRADLE_STORAGE}/bin
+#ENV PATH $PATH:${GRADLE_HOME}/bin
 
 # Update and Install Package
 RUN apt-get --quiet update --yes
