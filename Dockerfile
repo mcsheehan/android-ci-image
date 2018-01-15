@@ -25,9 +25,30 @@ ENV PATH $PATH:${GRADLE_STORAGE}/bin
 #ENV PATH $PATH:${GRADLE_HOME}/bin
 
 # Update and Install Package
-RUN apt-get --quiet update --yes
-RUN apt-get --quiet install --yes curl tar lib32stdc++6 lib32z1 ssh git 
-
+run apt-get update && \
+        apt-get install -y \
+        build-essential \
+        cmake \
+        git \
+        wget \
+        unzip \
+        yasm \
+        pkg-config \
+        libswscale-dev \
+        libtbb2 \
+        libtbb-dev \
+        libjpeg-dev \
+        libpng-dev \
+        libtiff-dev \
+        libjasper-dev \
+        libavformat-dev \
+        libpq-dev \
+        curl \
+        tar \
+        lib32stdc++6 \
+        lib32z1 \
+        ssh 
+        
 # Install Android SDK
 # https://developer.android.com/studio/index.html
 ENV ANDROID_SDK_ZIP https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS_REV}.zip
