@@ -26,7 +26,7 @@ ENV PATH $PATH:${GRADLE_STORAGE}/bin
 
 # Update and Install Package
 RUN apt-get --quiet update --yes
-RUN apt-get --quiet install --yes curl tar lib32stdc++6 lib32z1
+RUN apt-get --quiet install --yes curl tar lib32stdc++6 lib32z1 ssh git 
 
 # Install Android SDK
 # https://developer.android.com/studio/index.html
