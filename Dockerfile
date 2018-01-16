@@ -26,31 +26,7 @@ ENV PATH $PATH:${GRADLE_STORAGE}/bin
 
 
 # Update and Install Package
-run apt-get update && \
-        apt-get install -y \
-        build-essential \
-        cmake \
-        git \
-        wget \
-        unzip \
-        yasm \
-        pkg-config \
-        libswscale-dev \
-        libtbb2 \
-        libtbb-dev \
-        libjpeg-dev \
-        libpng-dev \
-        libtiff-dev \
-        libjasper-dev \
-        libavformat-dev \
-        libpq-dev \
-        curl \
-        tar \
-        lib32stdc++6 \
-        lib32z1 \
-        ssh \
-        libpcre3-dev \
-        swig
+RUN apt-get --quiet install --yes curl tar lib32stdc++6 lib32z1 git swig build-essential cmake wget pkg-config tar
         
 #Swig
 #run wget https://netcologne.dl.sourceforge.net/project/swig/swig/swig-3.0.12/swig-3.0.12.tar.gz
