@@ -24,6 +24,7 @@ ENV GRADLE_HOME ${GRADLE_STORAGE}/bin
 ENV PATH $PATH:${GRADLE_STORAGE}/bin
 #ENV PATH $PATH:${GRADLE_HOME}/bin
 
+
 # Update and Install Package
 run apt-get update && \
         apt-get install -y \
@@ -47,8 +48,18 @@ run apt-get update && \
         tar \
         lib32stdc++6 \
         lib32z1 \
-        ssh 
+        ssh \
+        libpcre3-dev \
+        swig
         
+#Swig
+#run wget https://netcologne.dl.sourceforge.net/project/swig/swig/swig-3.0.12/swig-3.0.12.tar.gz
+#run tar xzf swig-3.0.12.tar.gz
+#cd swig-3.0.12/
+#run ./configure
+#run make
+
+
 # Install Android SDK
 # https://developer.android.com/studio/index.html
 ENV ANDROID_SDK_ZIP https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS_REV}.zip
