@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk
+FROM ubuntu:16.04
 MAINTAINER Mark Sheehan
 
 ENV ANDROID_TARGET_SDK="27" \
@@ -26,7 +26,7 @@ ENV PATH $PATH:${GRADLE_STORAGE}/bin
 
 
 # Update and Install Package
-RUN apt-get --quiet install --yes curl tar git swig wget tar
+RUN apt-get --quiet install --yes curl tar git swig wget tar openjdk-8-jdk
         
 #Swig
 #run wget https://netcologne.dl.sourceforge.net/project/swig/swig/swig-3.0.12/swig-3.0.12.tar.gz
