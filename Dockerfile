@@ -1,6 +1,11 @@
 FROM ubuntu:16.04
 MAINTAINER Mark Sheehan
 
+
+# Update and Install Package
+RUN apt-get update
+RUN apt-get --quiet install --yes curl tar git swig wget tar openjdk-8-jdk
+
 ENV ANDROID_TARGET_SDK="27" \
     ANDROID_BUILD_TOOLS="27.0.2" \
     ANDROID_SDK_TOOLS_REV="3859397" \
@@ -23,10 +28,6 @@ RUN curl -sSL "${GRADLE_URL}" -o gradle-${GRADLE_VERSION}-bin.zip  \
 ENV GRADLE_HOME ${GRADLE_STORAGE}/bin
 ENV PATH $PATH:${GRADLE_STORAGE}/bin
 #ENV PATH $PATH:${GRADLE_HOME}/bin
-
-
-# Update and Install Package
-RUN apt-get --quiet install --yes curl tar git swig wget tar openjdk-8-jdk
         
 #Swig
 #run wget https://netcologne.dl.sourceforge.net/project/swig/swig/swig-3.0.12/swig-3.0.12.tar.gz
