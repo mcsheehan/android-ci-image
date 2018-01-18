@@ -4,7 +4,17 @@ MAINTAINER Mark Sheehan
 
 # Update and Install Package
 RUN apt-get update
-RUN apt-get --quiet install --yes curl tar git swig wget tar openjdk-8-jdk
+RUN apt-get --quiet install --yes curl \
+        tar \
+        git \
+        swig \
+        wget \
+        openjdk-8-jdk \
+        build-essential \
+        cmake \
+        unzip \
+        yasm \
+        pkg-config \
 
 ENV ANDROID_TARGET_SDK="27" \
     ANDROID_BUILD_TOOLS="27.0.2" \
