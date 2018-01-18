@@ -26,7 +26,7 @@ ENV PATH $PATH:${GRADLE_STORAGE}/bin
 
 
 # Update and Install Package
-RUN apt-get --quiet install --yes curl tar git swig build-essential cmake wget pkg-config tar
+RUN apt-get --quiet install --yes curl tar git swig wget tar
         
 #Swig
 #run wget https://netcologne.dl.sourceforge.net/project/swig/swig/swig-3.0.12/swig-3.0.12.tar.gz
