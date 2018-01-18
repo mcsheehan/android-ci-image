@@ -14,7 +14,7 @@ RUN apt-get --quiet install --yes curl \
         cmake \
         unzip \
         yasm \
-        pkg-config \
+        pkg-config
 
 ENV ANDROID_TARGET_SDK="27" \
     ANDROID_BUILD_TOOLS="27.0.2" \
