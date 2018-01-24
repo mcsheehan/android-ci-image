@@ -37,6 +37,7 @@ RUN curl -sSL "${GRADLE_URL}" -o gradle-${GRADLE_VERSION}-bin.zip  \
     && rm -rf gradle-${GRADLE_VERSION}-bin.zip
 
 ENV GRADLE_HOME ${GRADLE_STORAGE}/bin
+ENV GRADLE_USER_HOME ${GRADLE_STORAGE}/bin
 ENV PATH $PATH:${GRADLE_STORAGE}/bin
 #ENV PATH $PATH:${GRADLE_HOME}/bin
         
